@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dassModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="companyid" />
+          </Key>
+          <Property Name="companyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyname" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="contactperson" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JSeeker">
+          <Key>
+            <PropertyRef Name="jid" />
+          </Key>
+          <Property Name="jid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="mname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="InsertData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="p_MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="p_LastName" Type="varchar" Mode="In" />
+          <Parameter Name="p_City" Type="varchar" Mode="In" />
+          <Parameter Name="p_State" Type="varchar" Mode="In" />
+          <Parameter Name="p_Country" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ShowAllDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="jid" Type="int" Nullable="false" />
+                <Property Name="fname" Type="varchar" MaxLength="50" />
+                <Property Name="mname" Type="varchar" MaxLength="50" />
+                <Property Name="lname" Type="varchar" MaxLength="50" />
+                <Property Name="city" Type="varchar" MaxLength="50" />
+                <Property Name="state" Type="varchar" MaxLength="50" />
+                <Property Name="country" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="Updatedata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Jid" Type="int" Mode="In" />
+          <Parameter Name="p_FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="p_MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="p_LastName" Type="varchar" Mode="In" />
+          <Parameter Name="p_City" Type="varchar" Mode="In" />
+          <Parameter Name="p_State" Type="varchar" Mode="In" />
+          <Parameter Name="p_Country" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dassModelStoreContainer">
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JSeeker" EntityType="Self.JSeeker" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dassModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="ShowAllDetails_Result">
+          <Property Name="jid" Type="Int32" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="companyid" />
+          </Key>
+          <Property Name="companyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactperson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JSeeker">
+          <Key>
+            <PropertyRef Name="jid" />
+          </Key>
+          <Property Name="jid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="dassEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="JSeekers" EntityType="Self.JSeeker" />
+          <FunctionImport Name="ShowAllDetails" IsComposable="true" ReturnType="Collection(dassModel.ShowAllDetails_Result)" />
+          <FunctionImport Name="InsertData">
+            <Parameter Name="p_FirstName" Mode="In" Type="String" />
+            <Parameter Name="p_MiddleName" Mode="In" Type="String" />
+            <Parameter Name="p_LastName" Mode="In" Type="String" />
+            <Parameter Name="p_City" Mode="In" Type="String" />
+            <Parameter Name="p_State" Mode="In" Type="String" />
+            <Parameter Name="p_Country" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Updatedata">
+            <Parameter Name="p_Jid" Mode="In" Type="Int32" />
+            <Parameter Name="p_FirstName" Mode="In" Type="String" />
+            <Parameter Name="p_MiddleName" Mode="In" Type="String" />
+            <Parameter Name="p_LastName" Mode="In" Type="String" />
+            <Parameter Name="p_City" Mode="In" Type="String" />
+            <Parameter Name="p_State" Mode="In" Type="String" />
+            <Parameter Name="p_Country" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dassModelStoreContainer" CdmEntityContainer="dassEntities">
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="dassModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="companyid" ColumnName="companyid" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="contactperson" ColumnName="contactperson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JSeekers">
+            <EntityTypeMapping TypeName="dassModel.JSeeker">
+              <MappingFragment StoreEntitySet="JSeeker">
+                <ScalarProperty Name="jid" ColumnName="jid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="dassModel.Store.ShowAllDetails" FunctionImportName="ShowAllDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dassModel.ShowAllDetails_Result">
+                <ScalarProperty Name="jid" ColumnName="jid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertData" FunctionName="dassModel.Store.InsertData" />
+          <FunctionImportMapping FunctionImportName="Updatedata" FunctionName="dassModel.Store.Updatedata" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
